@@ -1,12 +1,11 @@
 package ejercicio1.model;
 
 import javax.swing.JOptionPane;
-import java.sql.SQLException;
 
 public class AgregarParticipante {
     private static final String REGEX_TELEFONO = "\\d{4}-\\d{6}";
     ParticipantesDatabaseService databaseService;
-    public AgregarParticipante(ParticipantesDatabaseService databaseService) throws SQLException {
+    public AgregarParticipante(ParticipantesDatabaseService databaseService) {
         this.databaseService = databaseService;
     }
     public void agregar(String nombre, String telefono, String region){

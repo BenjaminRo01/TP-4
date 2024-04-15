@@ -15,7 +15,7 @@ public class JdbcDatabaseParticipantes implements ParticipantesDatabaseService {
     @Override
     public void insert(String nombre, String telefono, String region) {
         try(Connection connection = this.conn.connection();
-            PreparedStatement st = connection.prepareStatement(SQL_INSERT_PARTICIPANTES);)
+            PreparedStatement st = connection.prepareStatement(SQL_INSERT_PARTICIPANTES))
         {
             st.setString(1, nombre);
             st.setString(2, telefono);
