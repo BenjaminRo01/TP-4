@@ -12,13 +12,13 @@ import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
 import java.sql.SQLException;
 
-public class AddParticipantView extends JFrame{
+public class VentanaAgregarParticipante extends JFrame{
     private JTextField nombre;
     private JTextField telefono;
     private JTextField region;
     private final AgregarParticipante agregarParticipante;
 
-    public AddParticipantView(AgregarParticipante agregarParticipante){
+    public VentanaAgregarParticipante(AgregarParticipante agregarParticipante){
         this.agregarParticipante = agregarParticipante;
     }
 

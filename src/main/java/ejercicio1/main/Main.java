@@ -2,7 +2,7 @@ package ejercicio1.main;
 
 import ejercicio1.database.JdbcDatabaseParticipantes;
 import ejercicio1.model.AgregarParticipante;
-import ejercicio1.ui.AddParticipantView;
+import ejercicio1.ui.VentanaAgregarParticipante;
 
 import java.awt.*;
 
@@ -14,7 +14,7 @@ public class Main {
         EventQueue.invokeLater(() -> {
             try {
                 var agregarParticipante = new AgregarParticipante(new JdbcDatabaseParticipantes(URL, USER, PASSWORD));
-                new AddParticipantView(agregarParticipante).setupUIComponents();
+                new VentanaAgregarParticipante(agregarParticipante).setupUIComponents();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
