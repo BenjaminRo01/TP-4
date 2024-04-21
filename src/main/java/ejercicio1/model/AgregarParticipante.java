@@ -1,6 +1,6 @@
 package ejercicio1.model;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class AgregarParticipante {
     private static final String REGEX_TELEFONO = "\\d{4}-\\d{6}";

@@ -2,14 +2,9 @@ package ejercicio1.ui;
 
 import ejercicio1.model.AgregarParticipante;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.sql.SQLException;
 
 public class VentanaAgregarParticipante extends JFrame{

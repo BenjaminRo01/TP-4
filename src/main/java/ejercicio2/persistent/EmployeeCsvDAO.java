@@ -22,8 +22,12 @@ public class EmployeeCsvDAO implements EmployeeDAO {
         List<Employee> csvData = new ArrayList<Employee>();
         try (CSVReader reader = new CSVReader(new FileReader(this.path))) {
             String[] row = null;
+            boolean firstRow = true;
             while ((row = reader.readNext()) != null) {
-                csvData.add(new Employee(row[0],row[1], formattedStringToDate(row[2]), row[3]));
+                if(!firstRow){
+                    csvData.add(new Employee(row[0],row[1], formattedStringToDate(row[2]), row[3]));
+                }
+                firstRow = false;
             }
             csvData.removeFirst();
         } catch (IOException e) {
