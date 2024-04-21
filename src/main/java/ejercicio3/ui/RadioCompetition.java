@@ -145,5 +145,4 @@ public class RadioCompetition {
                                 .addContainerGap(67, Short.MAX_VALUE)));
         contentPane.setLayout(gl_contentPane);
     }
-
 }

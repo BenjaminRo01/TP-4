@@ -24,7 +24,7 @@ public class ConcursoManager {
         // Guarda en inscriptos.txt los datos de la persona y el concurso elegido
         Optional<Concurso> concursoOptional = concursoDAO.obtenerConcurso(nombreConcurso);
         if (concursoOptional.isEmpty()) {
-            return;
+            return ;
         }
         Concurso concurso = concursoOptional.get();
         Inscripcion inscripcion = new Inscripcion(apellido, nombre, telefono, email, concurso);
