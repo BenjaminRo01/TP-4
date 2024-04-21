@@ -6,6 +6,6 @@ import ejercicio2.model.Notification;
 public class EmailNotification implements Notification {
     @Override
     public void send(Employee employee) {
-
+        System.out.println(employee.surname() + " " + employee.name() + " " + employee.birthdate() + " " + employee.email());
     }
 }
