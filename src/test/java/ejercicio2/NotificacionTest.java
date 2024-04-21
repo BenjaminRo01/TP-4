@@ -2,11 +2,8 @@ package ejercicio2;
 
 import ejercicio2.model.BirthdayNotification;
 import ejercicio2.model.FakeNotification;
-import ejercicio2.notification.EmailNotification;
 import ejercicio2.persistent.EmployeeCsvDAO;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;

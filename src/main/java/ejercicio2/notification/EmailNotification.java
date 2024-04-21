@@ -2,11 +2,14 @@ package ejercicio2.notification;
 
 import ejercicio2.model.Employee;
 import ejercicio2.model.Notification;
-import jakarta.mail.*;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
 public class EmailNotification implements Notification {

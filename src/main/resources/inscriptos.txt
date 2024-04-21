@@ -1,0 +1,11 @@
+apellido,nombre,teléfono,email,idConcurso
+Young,Angus,4444-898789,angus@acdc.com,1
+Johnson,Brian,7789-658987,brian@acdc.com,2
+Smith,Emma,555-123456,emma.smith@acdc.com,3
+García,Javier,9876-543210,javier.garcia@acdc.com,4
+Lee,Soo-Min,123-456789,soomin.lee@acdc.com,5
+Brown,Olivia,1111-222333,olivia.brown@email.com,6
+Miller,David,9999-888777,david.miller@email.com,7
+Chen,Li Wei,456-789012,liwei.chen@email.com,8
+Taylor,Grace,333-444555,grace.taylor@email.com,9
+Kim,Ji-Hoon,987-654321,jihoon.kim@email.com,10
