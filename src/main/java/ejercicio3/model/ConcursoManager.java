@@ -2,22 +2,30 @@ package ejercicio3.model;
 
 import javax.swing.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ConcursoManager {
     private final ConcursoDAO concursoDAO;
-    public ConcursoManager(ConcursoDAO concursoDAO){
+    private final InscripcionDAO inscripcionDAO;
+    public ConcursoManager(ConcursoDAO concursoDAO, InscripcionDAO inscripcionDAO){
         this.concursoDAO = concursoDAO;
+        this.inscripcionDAO = inscripcionDAO;
     }
     public List<String> todosLosConcursos() {
         // carga del archivo de texto concursos.txt los concursos
-        List<Concurso> concursos = concursoDAO.getConcursos();
+        List<Concurso> concursos = concursoDAO.obtenerListaConcursos();
         return concursos.stream().map(Concurso::nombre).collect(Collectors.toList());
     }
     public void saveInscription(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {
-        if (validations(nombre,apellido,idParticipante,email,telefono,nombreConcurso)) {
-            // Guarda en inscriptos.txt los datos de la persona y el concurso elegido
-            
+        if (!validations(nombre, apellido, idParticipante, email, telefono, nombreConcurso)) {
+            return;
+        }
+        // Guarda en inscriptos.txt los datos de la persona y el concurso elegido
+        Optional<Concurso> concursoOptional = concursoDAO.obtenerConcurso(nombreConcurso);
+        if(concursoOptional.isPresent()) {
+            Inscripcion inscripcion = new Inscripcion(apellido, nombre, telefono, email, concursoOptional.get());
+            inscripcionDAO.agregarInscripcion(inscripcion, concursoOptional.get());
         }
     }
     private boolean validations(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {

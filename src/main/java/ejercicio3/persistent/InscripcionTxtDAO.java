@@ -17,7 +17,7 @@ public class InscripcionTxtDAO implements InscripcionDAO {
     @Override
     public void agregarInscripcion(Inscripcion inscripcion, Concurso concurso) {
         try{
-            String registroInscripcion = inscripcion.apellido() + "," + inscripcion.nombre() + "," +
+            String registroInscripcion = "\n" + inscripcion.apellido() + "," + inscripcion.nombre() + "," +
                     inscripcion.telefono() + "," + inscripcion.email() + "," + concurso.id();
             Files.write(Paths.get(this.path),
                     registroInscripcion.getBytes(), StandardOpenOption.APPEND);
