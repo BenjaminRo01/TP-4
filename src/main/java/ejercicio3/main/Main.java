@@ -1,5 +1,6 @@
 package ejercicio3.main;
 import ejercicio3.model.ConcursoManager;
+import ejercicio3.persistent.ConcursoJdbcDAO;
 import ejercicio3.persistent.ConcursoTxtDAO;
 import ejercicio3.persistent.InscripcionTxtDAO;
 import ejercicio3.ui.RadioCompetition;
@@ -21,9 +22,13 @@ public class Main {
         });
     }
     private void start() {
+//        new RadioCompetition(
+//                new ConcursoManager(
+//                        new ConcursoTxtDAO("src/main/resources/concursos.txt"),
+//                        new InscripcionTxtDAO("src/main/resources/inscriptos.txt")));
         new RadioCompetition(
                 new ConcursoManager(
-                        new ConcursoTxtDAO("src/main/resources/concursos.txt"),
+                        new ConcursoJdbcDAO("jdbc:mysql://localhost:3306/tp-4", "root", ""),
                         new InscripcionTxtDAO("src/main/resources/inscriptos.txt")));
     }
 }

@@ -23,10 +23,12 @@ public class ConcursoManager {
         }
         // Guarda en inscriptos.txt los datos de la persona y el concurso elegido
         Optional<Concurso> concursoOptional = concursoDAO.obtenerConcurso(nombreConcurso);
-        if(concursoOptional.isPresent()) {
-            Inscripcion inscripcion = new Inscripcion(apellido, nombre, telefono, email, concursoOptional.get());
-            inscripcionDAO.agregarInscripcion(inscripcion, concursoOptional.get());
+        if (concursoOptional.isEmpty()) {
+            return;
         }
+        Concurso concurso = concursoOptional.get();
+        Inscripcion inscripcion = new Inscripcion(apellido, nombre, telefono, email, concurso);
+        inscripcionDAO.agregarInscripcion(inscripcion, concurso);
     }
     private boolean validations(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {
         if ("".equals(nombre)) {

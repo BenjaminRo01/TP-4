@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class InscripcionTxtDAO implements InscripcionDAO {
-    private String path;
+    private final String path;
     public InscripcionTxtDAO(String path){
         this.path = path;
     }

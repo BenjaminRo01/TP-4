@@ -39,7 +39,7 @@ public class ConcursoTxtDAO implements ConcursoDAO {
 
     @Override
     public Optional<Concurso> obtenerConcurso(String nombre) {
-        Concurso concurso;
+        Concurso concurso = null;
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             concurso = br.lines().map(row -> row.split(SEPARADOR))
                                 .filter(parts -> parts.length == 4 && parts[1].equals(nombre))
