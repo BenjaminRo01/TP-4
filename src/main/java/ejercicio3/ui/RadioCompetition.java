@@ -32,8 +32,9 @@ public class RadioCompetition {
     private JComboBox<String> comboBox;
     private JButton btnOk;
     private JLabel lblCompetition;
-    private ConcursoManager concursoManager;
-    public RadioCompetition() {
+    private final ConcursoManager concursoManager;
+    public RadioCompetition(ConcursoManager concursoManager) {
+        this.concursoManager = concursoManager;
         var frame = new JFrame("Inscription to Competition");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(100, 100, 451, 229);

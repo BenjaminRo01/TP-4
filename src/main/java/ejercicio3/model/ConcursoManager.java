@@ -1,16 +1,24 @@
 package ejercicio3.model;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConcursoManager {
+    private final ConcursoDAO concursoDAO;
+    public ConcursoManager(ConcursoDAO concursoDAO){
+        this.concursoDAO = concursoDAO;
+    }
     public List<String> todosLosConcursos() {
         // carga del archivo de texto concursos.txt los concursos
-        return null;
+        List<Concurso> concursos = concursoDAO.getConcursos();
+        return concursos.stream().map(Concurso::nombre).collect(Collectors.toList());
     }
     public void saveInscription(String nombre, String apellido, String id, String email, String telefono, String nombreConcurso) {
         if (validations(nombre,apellido,id,email,telefono,nombreConcurso)) {
             // Guarda en inscriptos.txt los datos de la persona y el concurso elegido
+            
         }
     }
     private boolean validations(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {

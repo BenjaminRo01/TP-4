@@ -1,4 +1,6 @@
 package ejercicio3.main;
+import ejercicio3.model.ConcursoManager;
+import ejercicio3.persistent.ConcursoTxtDAO;
 import ejercicio3.ui.RadioCompetition;
 
 import javax.swing.SwingUtilities;
@@ -12,12 +14,12 @@ public class Main {
                     new Main().start();
                 } catch (Exception e) {
                     // log exception...
-                    System.out.println(e);
+                    throw new RuntimeException(e);
                 }
             }
         });
     }
     private void start() {
-        new RadioCompetition();
+        new RadioCompetition(new ConcursoManager(new ConcursoTxtDAO("src/main/resources/concursos.txt")));
     }
 }

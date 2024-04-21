@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ConcursoTxtDAO implements ConcursoDAO {
     public static final String SEPARADOR = ",";
-    private String path;
+    private final String path;
     public ConcursoTxtDAO(String path){
         this.path = path;
     }
@@ -21,11 +21,12 @@ public class ConcursoTxtDAO implements ConcursoDAO {
     public List<Concurso> getConcursos() {
         List<Concurso> concursos = new ArrayList<Concurso>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String[] row = null;
+            String row = null;
             boolean firstRow = true;
-            while ((row = br.readLine().split(SEPARADOR)) != null) {
-                if(!firstRow) {
-                    concursos.add(new Concurso(row[0], row[1], formattedStringToDate(row[2]), formattedStringToDate(row[3])));
+            while ((row = br.readLine()) != null) {
+                String[] parts = row.split(SEPARADOR);
+                if(!firstRow && parts.length == 4) {
+                    concursos.add(new Concurso(parts[0], parts[1], formattedStringToDate(parts[2]), formattedStringToDate(parts[3])));
                 }
                 firstRow = false;
             }
