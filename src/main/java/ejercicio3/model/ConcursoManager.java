@@ -17,18 +17,19 @@ public class ConcursoManager {
         List<Concurso> concursos = concursoDAO.obtenerListaConcursos();
         return concursos.stream().map(Concurso::nombre).collect(Collectors.toList());
     }
-    public void saveInscription(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {
+    public boolean saveInscription(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {
         if (!validations(nombre, apellido, idParticipante, email, telefono, nombreConcurso)) {
-            return;
+            return false;
         }
         // Guarda en inscriptos.txt los datos de la persona y el concurso elegido
         Optional<Concurso> concursoOptional = concursoDAO.obtenerConcurso(nombreConcurso);
         if (concursoOptional.isEmpty()) {
-            return ;
+            return false;
         }
         Concurso concurso = concursoOptional.get();
         Inscripcion inscripcion = new Inscripcion(apellido, nombre, telefono, email, concurso);
         inscripcionDAO.agregarInscripcion(inscripcion, concurso);
+        return true;
     }
     private boolean validations(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {
         if ("".equals(nombre)) {

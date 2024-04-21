@@ -65,12 +65,15 @@ public class RadioCompetition {
         btnOk.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 btnOk.setEnabled(false);
-                concursoManager.saveInscription(txtName.getText(),
+                boolean exito = concursoManager.saveInscription(txtName.getText(),
                         txtLastName.getText(),
                         txtId.getText(),
                         txtEmail.getText(),
                         txtPhone.getText(),
                         comboBox.getSelectedItem().toString());
+                if (exito){
+                    limpiarCampos();
+                }
                 btnOk.setEnabled(true);
             }
         });
@@ -144,5 +147,13 @@ public class RadioCompetition {
                                 .addPreferredGap(ComponentPlacement.RELATED).addComponent(btnOk)
                                 .addContainerGap(67, Short.MAX_VALUE)));
         contentPane.setLayout(gl_contentPane);
+    }
+    private void limpiarCampos(){
+        this.txtLastName.setText("");
+        this.txtName.setText("");
+        this.txtPhone.setText("");
+        this.txtEmail.setText("");
+        this.txtId.setText("");
+        this.comboBox.setSelectedIndex(0);
     }
 }
