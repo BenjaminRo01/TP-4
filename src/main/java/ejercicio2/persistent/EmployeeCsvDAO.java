@@ -29,7 +29,6 @@ public class EmployeeCsvDAO implements EmployeeDAO {
                 }
                 firstRow = false;
             }
-            csvData.removeFirst();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
