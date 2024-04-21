@@ -13,4 +13,5 @@ public class Inscripcion {
         this.email = email;
         this.idConcurso = idConcurso;
     }
+
 }

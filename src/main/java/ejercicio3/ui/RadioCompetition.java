@@ -1,7 +1,11 @@
 package ejercicio3.ui;
 
+import ejercicio3.model.Concurso;
+import ejercicio3.model.ConcursoManager;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -28,6 +32,7 @@ public class RadioCompetition {
     private JComboBox<String> comboBox;
     private JButton btnOk;
     private JLabel lblCompetition;
+    private ConcursoManager concursoManager;
     public RadioCompetition() {
         var frame = new JFrame("Inscription to Competition");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,13 +64,21 @@ public class RadioCompetition {
         btnOk.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 btnOk.setEnabled(false);
-                saveInscription();
+                concursoManager.saveInscription(txtName.getText(),
+                        txtLastName.getText(),
+                        txtId.getText(),
+                        txtEmail.getText(),
+                        txtPhone.getText(),
+                        comboBox.getSelectedItem().toString());
                 btnOk.setEnabled(true);
             }
         });
         lblCompetition = new JLabel("Concurso:");
         comboBox = new JComboBox<String>();
-        todosLosConcursos();
+        List<String> concursos = concursoManager.todosLosConcursos();
+        for (String concurso : concursos){
+            comboBox.addItem(concurso);
+        }
     }
     private void layout() {
         GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -131,50 +144,5 @@ public class RadioCompetition {
                                 .addContainerGap(67, Short.MAX_VALUE)));
         contentPane.setLayout(gl_contentPane);
     }
-    private void todosLosConcursos() {
-        // carga del archivo de texto concursos.txt los concursos
-    }
-    private void saveInscription() {
-        if (validations()) {
-            // Guarda en inscriptos.txt los datos de la persona y el concurso elegido
-        }
-    }
-    private boolean validations() {
-        if ("".equals(txtName.getText())) {
-            JOptionPane.showMessageDialog(this.contentPane, "Nombre no puede ser vacio");
-            return false;
-        }
-        if ("".equals(txtLastName.getText())) {
-            JOptionPane.showMessageDialog(this.contentPane,
-                    "apellido no puede ser vacio");
-            return false;
-        }
-        if ("".equals(txtId.getText())) {
-            JOptionPane.showMessageDialog(this.contentPane, "dni no puede ser vacio");
-            return false;
-        }
-        if (!checkEmail(txtEmail.getText())) {
-            JOptionPane.showMessageDialog(this.contentPane,
-                    "email debe ser válido");
-            return false;
-        }
-        if (!checkPhone(txtPhone.getText())) {
-            JOptionPane.showMessageDialog(this.contentPane,
-                    "El teléfono debe ingresarse de la siguiente forma: NNNN-NNNNNN");
-            return false;
-        }
-        if (this.comboBox.getSelectedIndex() <= 0) {
-            JOptionPane.showMessageDialog(this.contentPane, "Debe elegir un Concurso");
-            return false;
-        }
-        return true;
-    }
-    private boolean checkEmail(String email) {
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        return email.matches(regex);
-    }
-    private boolean checkPhone(String telefono) {
-        String regex = "\\d{4}-\\d{6}";
-        return telefono.matches(regex);
-    }
+
 }
