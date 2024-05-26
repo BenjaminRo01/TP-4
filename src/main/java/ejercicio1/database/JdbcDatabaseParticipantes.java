@@ -14,16 +14,18 @@ public class JdbcDatabaseParticipantes implements ParticipantesDatabaseService {
         this.conn = new Conn(url, userName, password);
     }
     @Override
-    public void insert(String nombre, String telefono, String region) {
+    public int insert(String nombre, String telefono, String region) {
+        int exito = 0;
         try(Connection connection = this.conn.connection();
             PreparedStatement st = connection.prepareStatement(SQL_INSERT_PARTICIPANTES))
         {
             st.setString(1, nombre);
             st.setString(2, telefono);
             st.setString(3, region);
-            st.executeUpdate();
+            exito = st.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return exito;
     }
 }
