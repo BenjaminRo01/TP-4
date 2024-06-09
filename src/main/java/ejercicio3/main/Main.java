@@ -30,13 +30,13 @@ public class Main {
         });
     }
     private void start() {
-//        new RadioCompetition(
-//                new ConcursoManager(
-//                        new ConcursoTxtDAO(PATH_FILE_CONCURSOS_TXT),
-//                        new InscripcionTxtDAO(PATH_FILE_INSCRIPTOS_TXT)));
         new RadioCompetition(
                 new ConcursoManager(
-                        new ConcursoJdbcDAO(URL_LOCALHOST, USER_HOST, USER_PWD),
-                        new InscripcionJdbcDAO(URL_LOCALHOST, USER_HOST, USER_PWD)));
+                        new ConcursoTxtDAO(PATH_FILE_CONCURSOS_TXT),
+                        new InscripcionTxtDAO(PATH_FILE_INSCRIPTOS_TXT)));
+//        new RadioCompetition(
+//                new ConcursoManager(
+//                        new ConcursoJdbcDAO(URL_LOCALHOST, USER_HOST, USER_PWD),
+//                        new InscripcionJdbcDAO(URL_LOCALHOST, USER_HOST, USER_PWD)));
     }
 }

@@ -12,11 +12,13 @@ public class ConcursoManager {
         this.concursoDAO = concursoDAO;
         this.inscripcionDAO = inscripcionDAO;
     }
+    @Log
     public List<String> todosLosConcursos() {
         // carga del archivo de texto concursos.txt los concursos
         List<Concurso> concursos = concursoDAO.obtenerListaConcursos();
         return concursos.stream().map(Concurso::nombre).collect(Collectors.toList());
     }
+    @Log
     public boolean saveInscription(String nombre, String apellido, String idParticipante, String email, String telefono, String nombreConcurso) {
         if (!validations(nombre, apellido, idParticipante, email, telefono, nombreConcurso)) {
             return false;

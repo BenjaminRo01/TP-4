@@ -1,0 +1,4 @@
+"todosLosConcursos","sin parametros","2024/06/09 16:40:19"
+"saveInscription","benja|roselo|Concurso A","2024/06/09 16:40:34"
+"saveInscription","benja|roselo|44343434|Concurso B","2024/06/09 16:40:53"
+"saveInscription","benja|roselo|44343434|vwewvev|Concurso A","2024/06/09 16:41:14"
